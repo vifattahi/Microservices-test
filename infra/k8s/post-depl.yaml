@@ -22,9 +22,9 @@ metadata:
   name: posts-clusterip-srv
 spec:
   selector:
-    app: posts-clusterip-srv
+    app: posts
   ports:
-    - name: posts-clusterip-srv
+    - name: posts
       protocol: TCP
       port: 3001
       targetPort: 3001
