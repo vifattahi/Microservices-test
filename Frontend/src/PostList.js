@@ -6,7 +6,7 @@ import CommentList from './CommentList';
 const PostsList = () => {
     const [posts, setPosts] = useState({});
     const fetchPosts = async () => {
-        const response= await axios.get('http://localhost:3003/posts');
+        const response= await axios.get('http://posts.com/posts');
         setPosts(response.data);
     }
     useEffect(() => {
