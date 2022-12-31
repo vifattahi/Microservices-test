@@ -9,7 +9,7 @@ router.get('/posts', function(req, res, next) {
   res.send(posts);
 });
 
-router.post('/posts', async(req, res, next) => {
+router.post('/posts/create', async(req, res, next) => {
   const id = randomBytes(4).toString('hex');
   posts[id] = {id, title: req.body.title};
   await axios.post('http://event-bus-srv:3005/events', {
