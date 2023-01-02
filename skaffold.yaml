@@ -1,0 +1,61 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: penit
+deploy:
+  kubectl: {}
+build:
+  local:
+    push: false
+  artifacts:
+  - image: vifattahi/comments
+    context: Backend/comments
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '*.js'
+          dest: .
+  - image: vifattahi/moderation
+    context: Backend/moderation
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '*.js'
+          dest: .
+  - image: vifattahi/posts
+    context: Backend/posts
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '*.js'
+          dest: .
+  - image: vifattahi/event-bus
+    context: EventBus
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '*.js'
+          dest: .
+  - image: vifattahi/frontend
+    context: Frontend
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/*.js'
+          dest: .
+  - image: vifattahi/query
+    context: Query
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: '*.js'
+          dest: .
+manifests:
+  rawYaml:
+  - ./infra/k8s/*
