@@ -24,7 +24,7 @@ const handleEvent = (type, data) => {
   }
 };
 
-router.get('/posts', function(req, res, next) {
+router.get('/posts/findAll', function(req, res, next) {
   res.send(posts);
 });
 
