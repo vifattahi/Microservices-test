@@ -17,7 +17,6 @@ spec:
                 name: posts-clusterip-srv
                 port:
                   number: 3001
-        paths:
           - path: /posts/findAll
             pathType: Prefix
             backend:
@@ -25,7 +24,6 @@ spec:
                 name: query-clusterip-srv
                 port:
                   number: 3003
-        paths:
           - path: /posts/?(.*)/comments
             pathType: Prefix
             backend:
@@ -33,7 +31,6 @@ spec:
                 name: comments-clusterip-srv
                 port:
                   number: 3002
-        paths:
           - path: /?(.*)
             pathType: Prefix
             backend:
